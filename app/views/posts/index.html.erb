@@ -29,8 +29,9 @@
         </figure>
         <div class="media-content">
           <div class="content">
-            <h2 class="title is-4">
-              <strong><%= post.author.name %></strong>
+            <h1 class="title is-5"><%= post.author.name %></h1>
+            <h2 class="subtitle is-7">
+              <%= link_to "go to post", post_path(post[:id], method: "get") %>
             </h2>
             <p class="is-family-primary"> 
               <%= post.body %> 
