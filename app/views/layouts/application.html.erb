@@ -18,19 +18,21 @@
         </a>
       </div>
 
-      <div class="navbar-end">
-        <div class="navbar-item has-dropdown is-hoverable">
-          
-          <a class="navbar-link" href=<%= root_path %>>
-            <%= current_user[:name] %>
-          </a>
+      <% unless current_user.nil? %>
+        <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-hoverable">
+            
+            <a class="navbar-link" href=<%= root_path %>>
+              <%= current_user[:name] %>
+            </a>
 
-          <div class="navbar-dropdown">
-            <%= link_to "Log out", destroy_user_session_path, method: "delete", class: "navbar-item" %>
+            <div class="navbar-dropdown">
+              <%= link_to "Log out", destroy_user_session_path, method: "delete", class: "navbar-item" %>
+            </div>
+
           </div>
-
         </div>
-      </div>
+        <% end %>
     </nav>
 
     <%= yield %>
