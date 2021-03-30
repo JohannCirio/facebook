@@ -3,9 +3,12 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
+    friends_ids = current_user.friendships.map {|friend| friend[:friend_id] }
+    friends_ids << current_user.id
+    @posts = Post.where(author_id: friends_ids).order(last_comment_at: :desc)
+
     @post = Post.new
     @comment = Comment.new
-    @posts = Post.all
   end
 
   # GET /posts/1 or /posts/1.json
