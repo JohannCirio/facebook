@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  root to: "posts#index"
   resources :comments, only: [:create, :edit, :update, :destroy]
   resources :posts
-  root to: "posts#index"
+  resources :users, only: [:index]
+  resources :friendships, only: [:create, :destroy, :update]
+
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
