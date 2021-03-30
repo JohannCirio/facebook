@@ -41,7 +41,8 @@
             <h2 class="subtitle is-7">
               <%= link_to "go to post", post_path(post[:id], method: "get") %>
             </h2>
-            <p class="is-family-primary"> 
+            <p class="is-family-primary">
+              <p> <%= post.last_comment_at %> </p>
               <%= post.body %> 
             </p>
           </div>
