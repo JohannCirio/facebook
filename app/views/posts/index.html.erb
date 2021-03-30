@@ -1,7 +1,15 @@
-<p id="notice"><%= notice %></p>
+<% unless notice.nil? %>
+  <p class="notification is-warning" sid="notice"><%= notice %></p>
+<% end %>
 
 <section id="new-post-form" class="columns">
-  <div class="column is-half is-offset-one-quarter card">
+
+  <div class="column is-one-quarter">
+    <%= link_to "View all users", users_path, class: "button ml-3 is-primary" %>
+  </div>
+
+
+  <div class="column is-half card">
     <%= form_with model: @post, local: true do |form| %>
       <div class="field">
         <%= form.label :body, "New post", class: "label"%>
