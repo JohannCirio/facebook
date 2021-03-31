@@ -26,6 +26,7 @@
   </div>
 </section>
 
+
 <section class="columns" id="posts">
   <div class="card column is-half is-offset-one-quarter">
     <% @posts.each do |post| %>
@@ -46,6 +47,16 @@
               <%= post.body %> 
             </p>
           </div>
+          <nav class="level">
+            <div class="level-left">
+              <p class="level-item has-text-info">Likes <%= post.likes.count %></p>
+              <% if post.likes.find_by(user_id: current_user.id) %>
+                <%= link_to icon('fas', 'thumbs-up'), post_like_path(post_id: post.id, id: post.likes.find_by(user_id: current_user.id).id), method: "delete", class: "level-item"%>
+              <% else %>
+                <%= link_to icon('far', 'thumbs-up') , post_likes_path(post_id: post.id), method: "post", class: "level-item" %>
+              <% end %>
+            </div>
+          </nav>
 
           <% post.comments.each do |comment| %>
             <article class="media">
@@ -63,6 +74,18 @@
                     <%= comment.content %> 
                   </p>
                 </div>
+
+                <nav class="level">
+                  <div class="level-left">
+                    <p class="level-item has-text-info">Likes <%= comment.likes.count %></p>
+                    <% if comment.likes.find_by(user_id: current_user.id) %>
+                      <%= link_to icon('fas', 'thumbs-up'), comment_like_path(comment_id: comment.id, id: comment.likes.find_by(user_id: current_user.id).id), method: "delete", class: "level-item"%>
+                    <% else %>
+                      <%= link_to icon('far', 'thumbs-up') , comment_likes_path(comment_id: comment.id), method: "post", class: "level-item" %>
+                    <% end %>
+                  </div>
+                </nav>
+
               </div>            
             </article>
           <% end %>
