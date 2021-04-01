@@ -31,8 +31,12 @@ gem 'bulma-rails', '~> 0.9.1'
 # Fonts Awesome icons
 gem 'font-awesome-sass', '~> 5.15.1'
 
+# OmniAuth Facebook
+gem 'omniauth-facebook', '~> 8.0'
+
+
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
