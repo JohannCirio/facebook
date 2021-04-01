@@ -32,9 +32,15 @@
     <% @posts.each do |post| %>
       <article class="media">
         <figure class="media-left">
+          <% if post.author.avatar.attached? && post.author.avatar.representable? %>
+            <p class="image is-64x64">
+              <%= image_tag post.author.avatar.variant(resize_to_limit: [64, 64])%>
+            </p>            
+          <% else %>
           <p class="image is-64x64">
             <%= image_tag ("pipboy.jpeg")%>
           </p>
+          <% end %>
         </figure>
         <div class="media-content">
           <div class="content">
